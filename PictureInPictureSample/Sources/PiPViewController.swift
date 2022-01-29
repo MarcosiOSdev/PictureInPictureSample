@@ -21,12 +21,16 @@ final class PiPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pipScreen.delegate = self
+    }
+    
+    //Using because of Constraints inside PipScreen
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         pipScreen.movieLink = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pipScreen.play()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -49,6 +53,7 @@ final class PiPViewController: UIViewController {
 extension PiPViewController: PiPScreenDelegate {
     func didSetupAVPlayer(with url: URL) {
         setupPictureInPicture(playerLayer: pipScreen.playerLayer)
+        pipScreen.play()
     }
     
     func didActionPipButton() {
