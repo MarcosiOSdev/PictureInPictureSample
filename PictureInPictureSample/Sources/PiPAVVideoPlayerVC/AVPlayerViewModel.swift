@@ -11,7 +11,6 @@ import Combine
 final class AVPlayerViewModel: ObservableObject {
     @Published var pipStatus: PipStatus = .undefined
     @Published var media: MediaModel?
-    @Published var startPip: Bool = false
     
     var startPictureInPictureAutomaticallyFromInline = true
     

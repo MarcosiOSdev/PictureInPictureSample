@@ -14,19 +14,22 @@ struct AVVideoPlayerRepresentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = AVPlayerViewController
     
     @ObservedObject var viewModel: AVPlayerViewModel
+    private var coordinator: Coordinator {
+        Coordinator(self)
+    }
     
     func makeUIViewController(context: Context) -> AVPlayerViewController {
         let avPlayerVC = AVPlayerViewController()
         avPlayerVC.player = viewModel.player
         avPlayerVC.canStartPictureInPictureAutomaticallyFromInline = viewModel.startPictureInPictureAutomaticallyFromInline
-        avPlayerVC.delegate = makeCoordinator()                
+        avPlayerVC.delegate = coordinator
         return avPlayerVC
     }
     
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        return coordinator
     }
 }
 

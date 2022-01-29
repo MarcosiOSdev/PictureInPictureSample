@@ -96,9 +96,7 @@
 				1D06427327A5D22200F11EC4 /* Config */,
 				1D06427F27A5DC9700F11EC4 /* PiPAVVideoPlayerVC */,
 				1D06428027A5DCA000F11EC4 /* Model */,
-				1D06428127A5DCC100F11EC4 /* PiPViewController.swift */,
-				1D06428527A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift */,
-				1D06428327A5DF7E00F11EC4 /* PiPScreen.swift */,
+				1D06428727A5FF8500F11EC4 /* PipViewController */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -128,6 +126,16 @@
 				1D06427727A5D29B00F11EC4 /* MediaModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1D06428727A5FF8500F11EC4 /* PipViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D06428527A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift */,
+				1D06428127A5DCC100F11EC4 /* PiPViewController.swift */,
+				1D06428327A5DF7E00F11EC4 /* PiPScreen.swift */,
+			);
+			path = PipViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

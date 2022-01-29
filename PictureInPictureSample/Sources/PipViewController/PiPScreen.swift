@@ -9,7 +9,7 @@ import UIKit
 import AVKit
 
 protocol PiPScreenDelegate: NSObjectProtocol {
-    func didSetupAVPlayer(with url: URL)
+    func didSetupAVPlayer()
     func didActionPipButton()
 }
 
@@ -35,13 +35,15 @@ final class PiPScreen: UIView {
     }()
     
     // MARK: - Properties AVPlayer
-    private var player: AVPlayer!
+    private var player: AVPlayer?
     
     
     // MARK: - Publics Properties
     var movieLink: String = "" {
         didSet {
-            setupAVPlayer()
+            guard let url = URL(string: movieLink),
+            let player = player else { return }
+            player.replaceCurrentItem(with: .init(url: url))
         }
     }
     var playerLayer: AVPlayerLayer!
@@ -61,6 +63,11 @@ final class PiPScreen: UIView {
     func initialize() {
         setupView()
         setupAnchors()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupAVPlayer()
     }
     
     // MARK: - Setups
@@ -93,8 +100,9 @@ final class PiPScreen: UIView {
         playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = playerView.bounds
         playerLayer.videoGravity = .resizeAspectFill
-        playerView.layer.addSublayer(playerLayer)        
-        delegate?.didSetupAVPlayer(with: url)
+        playerView.layer.addSublayer(playerLayer)
+        play()
+        delegate?.didSetupAVPlayer()
     }
     
     // MARK: - Event UI
@@ -104,11 +112,11 @@ final class PiPScreen: UIView {
     }
     
     func play() {
-        player.play()
+        player?.play()
     }
     
     func stop() {
-        player.pause()
+        player?.pause()
     }
     
     func pipButtonHidden(_ isHidden: Bool) {

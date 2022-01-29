@@ -19,14 +19,10 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .foregroundColor(viewModel.pipStatus.color)
             
-            AVVideoPlayerView(viewModel: viewModel)
-            
-            Button("Pip") {
-                viewModel.startPip = true
-            }
+            AVVideoPlayerView(viewModel: viewModel)            
         }
         .onAppear {
-            viewModel.play(MediaModel(title: "BigBuckBunny", url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))
+            viewModel.media = .init(title: "BigBuckBunny", url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         }
         .onDisappear(perform: viewModel.pause)
         

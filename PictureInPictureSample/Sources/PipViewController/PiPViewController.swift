@@ -21,16 +21,17 @@ final class PiPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pipScreen.delegate = self
+        pipScreen.movieLink = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     }
     
     //Using because of Constraints inside PipScreen
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        pipScreen.movieLink = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        super.viewDidLayoutSubviews()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -38,11 +39,11 @@ final class PiPViewController: UIViewController {
         pipScreen.stop()
     }
     
-    func setupPictureInPicture(playerLayer: AVPlayerLayer) {
+    func setupPictureInPicture() {
         // Ensure PiP is supported by current device.
         if AVPictureInPictureController.isPictureInPictureSupported() {
             // Create a new controller, passing the reference to the AVPlayerLayer.
-            pipController = AVPictureInPictureController(playerLayer: playerLayer)
+            pipController = AVPictureInPictureController(playerLayer: pipScreen.playerLayer)
             pipController.delegate = self
         } else {
             pipScreen.pipButtonHidden(true)
@@ -51,9 +52,8 @@ final class PiPViewController: UIViewController {
 }
 
 extension PiPViewController: PiPScreenDelegate {
-    func didSetupAVPlayer(with url: URL) {
-        setupPictureInPicture(playerLayer: pipScreen.playerLayer)
-        pipScreen.play()
+    func didSetupAVPlayer() {
+        setupPictureInPicture()
     }
     
     func didActionPipButton() {
