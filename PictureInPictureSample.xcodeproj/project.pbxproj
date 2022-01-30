@@ -18,6 +18,9 @@
 		1D06428227A5DCC100F11EC4 /* PiPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428127A5DCC100F11EC4 /* PiPViewController.swift */; };
 		1D06428427A5DF7E00F11EC4 /* PiPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428327A5DF7E00F11EC4 /* PiPScreen.swift */; };
 		1D06428627A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428527A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift */; };
+		1D06428927A60F3500F11EC4 /* ChangeResolutionVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428827A60F3500F11EC4 /* ChangeResolutionVideoView.swift */; };
+		1D06428B27A6111A00F11EC4 /* Resolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428A27A6111A00F11EC4 /* Resolution.swift */; };
+		1D06428D27A614EA00F11EC4 /* ChangeResolutionVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06428C27A614EA00F11EC4 /* ChangeResolutionVideoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		1D06428127A5DCC100F11EC4 /* PiPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPViewController.swift; sourceTree = "<group>"; };
 		1D06428327A5DF7E00F11EC4 /* PiPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPScreen.swift; sourceTree = "<group>"; };
 		1D06428527A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		1D06428827A60F3500F11EC4 /* ChangeResolutionVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeResolutionVideoView.swift; sourceTree = "<group>"; };
+		1D06428A27A6111A00F11EC4 /* Resolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolution.swift; sourceTree = "<group>"; };
+		1D06428C27A614EA00F11EC4 /* ChangeResolutionVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeResolutionVideoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,21 +88,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		1D06427327A5D22200F11EC4 /* Config */ = {
+		1D06427327A5D22200F11EC4 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
 				1D06426527A5D1FF00F11EC4 /* PictureInPictureSampleApp.swift */,
 			);
-			path = Config;
+			path = Starter;
 			sourceTree = "<group>";
 		};
 		1D06427427A5D22D00F11EC4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1D06427327A5D22200F11EC4 /* Config */,
+				1D06427327A5D22200F11EC4 /* Starter */,
 				1D06427F27A5DC9700F11EC4 /* PiPAVVideoPlayerVC */,
 				1D06428027A5DCA000F11EC4 /* Model */,
 				1D06428727A5FF8500F11EC4 /* PipViewController */,
+				1D06428827A60F3500F11EC4 /* ChangeResolutionVideoView.swift */,
+				1D06428C27A614EA00F11EC4 /* ChangeResolutionVideoViewModel.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -124,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				1D06427727A5D29B00F11EC4 /* MediaModel.swift */,
+				1D06428A27A6111A00F11EC4 /* Resolution.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,10 +221,13 @@
 				1D06427E27A5D3C100F11EC4 /* AVVideoPlayerRepresentable.swift in Sources */,
 				1D06428627A5E1C100F11EC4 /* PiPViewControllerRepresentable.swift in Sources */,
 				1D06426627A5D1FF00F11EC4 /* PictureInPictureSampleApp.swift in Sources */,
+				1D06428B27A6111A00F11EC4 /* Resolution.swift in Sources */,
 				1D06428427A5DF7E00F11EC4 /* PiPScreen.swift in Sources */,
 				1D06427A27A5D2B600F11EC4 /* AVPlayerViewModel.swift in Sources */,
 				1D06427C27A5D2E000F11EC4 /* PipStatus.swift in Sources */,
+				1D06428D27A614EA00F11EC4 /* ChangeResolutionVideoViewModel.swift in Sources */,
 				1D06427827A5D29B00F11EC4 /* MediaModel.swift in Sources */,
+				1D06428927A60F3500F11EC4 /* ChangeResolutionVideoView.swift in Sources */,
 				1D06428227A5DCC100F11EC4 /* PiPViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

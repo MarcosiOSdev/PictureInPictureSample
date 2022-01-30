@@ -22,6 +22,10 @@ struct PictureInPictureSampleApp: App {
                     }, label: {
                         (Text("PiP SwiftUI ") + Text("UIViewControllerRepresentable").font(.caption))
                     })
+                    
+                    NavigationLink("Video with Resolution") {
+                        ChangeResolutionVideoView()
+                    }
                 }
                 .navigationBarTitle("Picture in Picture Samples 🎬")
             }
