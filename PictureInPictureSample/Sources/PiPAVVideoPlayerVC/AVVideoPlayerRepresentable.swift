@@ -14,49 +14,54 @@ struct AVVideoPlayerRepresentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = AVPlayerViewController
     
     @ObservedObject var viewModel: AVPlayerViewModel
-    private var coordinator: Coordinator {
-        Coordinator(self)
-    }
     
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let avPlayerVC = AVPlayerViewController()
+    let avPlayerVC = AVPlayerViewController()
+    var changeStatus: ((PipStatus) -> Void)?
+    
+    func makeUIViewController(context: Context) -> AVPlayerViewController {        
         avPlayerVC.player = viewModel.player
         avPlayerVC.canStartPictureInPictureAutomaticallyFromInline = viewModel.startPictureInPictureAutomaticallyFromInline
-        avPlayerVC.delegate = coordinator
         return avPlayerVC
     }
     
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
-        return coordinator
+        return Coordinator(avPlayerVC: avPlayerVC, changeStatus: changeStatus)
     }
 }
 
 extension AVVideoPlayerRepresentable {
     class Coordinator: NSObject, AVPlayerViewControllerDelegate {
-        let parent: AVVideoPlayerRepresentable
+        let avPlayerVC: AVPlayerViewController
         
-        init(_ parent: AVVideoPlayerRepresentable) {
-            self.parent = parent
-            
+        var changeStatus: ((PipStatus) -> Void)?
+        
+        init(
+            avPlayerVC: AVPlayerViewController,
+            changeStatus: ((PipStatus) -> Void)? = nil
+        ) {
+            self.avPlayerVC = avPlayerVC
+            self.changeStatus = changeStatus
+            super.init()
+            self.avPlayerVC.delegate = self
         }
         
         func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
-            parent.viewModel.pipStatus = .willStart
+            self.changeStatus?(.willStart)
         }
         
         func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
-            parent.viewModel.pipStatus = .didStart
+            self.changeStatus?(.didStart)
         }
         
         func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
-            parent.viewModel.pipStatus = .willStop
+            self.changeStatus?(.willStop)
         }
         
         
         func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
-            parent.viewModel.pipStatus = .didStop
+            self.changeStatus?(.didStop)
         }
     }
 }
